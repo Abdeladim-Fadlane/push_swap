@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:55:06 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/09 14:49:25 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:20:48 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,40 @@ t_list  *ft_lstnew(int k)
 
     list->data = k;
     list->next = NULL;
-    printf("%d\n" ,list->data);
-    return(list);
-    
+    return(list); 
 }
 
-void ft_lstlast(t_list **list)
+t_list *ft_lstlast(t_list **list)
 {
-    while((*list)->next)
-        *list = (*list)->next;
+    t_list *tmp;
+
+    tmp = (*list);
+    while(tmp->next)
+        tmp = tmp->next;
+    return (tmp);
 }
 
 void    add_back(t_list **list,t_list *new)
 {
+    t_list *tmp;
+
+    tmp = (*list);
     if ((*list) == NULL)
         *list = new;
     else if ((*list))
     {
-        ft_lstlast(list);
-        (*list)->next = new;
+        tmp = ft_lstlast(list);
+        tmp->next = new;
     }
+}
+
+int ft_lstsize(t_list *list)
+{
+    int i = 0;
+    while (list->next)
+    {
+        list = list->next;
+        i++;
+    }
+    return i ;
 }

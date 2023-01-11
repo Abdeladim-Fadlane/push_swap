@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:32:57 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/09 14:42:04 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/09 21:02:14 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j])
 		p[i++] = s2[j++];
 	p[i] = 0;
-	//free(s1);
 	return (p);
 }
 
