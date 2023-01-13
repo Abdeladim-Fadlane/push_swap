@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils2.c                                 :+:      :+:    :+:   */
+/*   rules_b.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:33:20 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/11 18:24:37 by afadlane         ###   ########.fr       */
+/*   Created: 2023/01/13 11:37:24 by afadlane          #+#    #+#             */
+/*   Updated: 2023/01/13 11:38:15 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void    ft_sa(t_list **lst)
+void    ft_sb(t_list **lst)
 {
     int k;
    
     k = (*lst)->data;
     (*lst)->data = (*lst)->next->data;
     (*lst)->next->data = k;
+    write(1,"sb\n",3);
+}
+void	push_b(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*ptr;
+
+	if (*stack_a == NULL)
+		return ;
+	ptr = (*stack_a)->next;
+	(*stack_a)->next = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = ptr;
+    write(1,"pb\n",3);
 }
 
-void    ft_ra(t_list **list)
+void    ft_rb(t_list **list)
 {
     t_list *ptr;
     t_list *ptr1;
@@ -35,8 +48,10 @@ void    ft_ra(t_list **list)
         (*list)->next->next = NULL;
         (*list) = ptr;
     }
+    write(1,"rb\n",3);
 }
-void    ft_rra(t_list **lst)
+
+void    ft_rrb(t_list **lst)
 {
     t_list *ptr;
     t_list *ptr1;
@@ -55,18 +70,5 @@ void    ft_rra(t_list **lst)
         ptr->next = NULL;
         (*lst)->next = ptr1;
     } 
-}
-
-void    push_b(t_list **stack_a,t_list **stack_b)
-{   
-    if((*stack_b) != NULL)
-    {
-        (*stack_b)->next = (*stack_a);
-    }else
-    {
-        (*stack_b) = (*stack_a);
-        (*stack_a) = (*stack_a)->next;
-        (*stack_b)->next = NULL;
-    }
-    return ;
+    write(1,"rrb\n",4);
 }
