@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils1.c                                 :+:      :+:    :+:   */
+/*   check_push_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:45:08 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/12 13:19:35 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:55:21 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    ft_check(char *p)
 {
     if(!(check_is_number(p)))
     {
-        printf("invalid");
+        write(1,"invalid arg\n",12);
         exit(1);
     } 
 }
@@ -63,7 +63,7 @@ void duplicate(int *array, int n)
         {
             if (array[i] == array[j])
             {
-                printf("There are duplicates.\n");
+                write(1,"There are duplicates.\n",22);
                 exit(0);
             }
             j++;

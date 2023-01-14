@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:55:06 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/12 10:30:15 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:09:00 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    add_back(t_list **list,t_list *new)
 int ft_lstsize(t_list *list)
 {
     int i = 0;
-    while (list->next)
+    while (list)
     {
         list = list->next;
         i++;
