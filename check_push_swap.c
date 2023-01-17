@@ -6,54 +6,65 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:45:08 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/13 11:55:21 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:58:34 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
-
-void ft_free(char **ptr)
+int	limits(char *arg)
 {
-    int i = 0;
-    while(ptr[i])
-    {
-        free(ptr[i]);
-        i++;
-    }
-    free(ptr);
+	return (ft_atoi(arg) < INT_MIN || ft_atoi(arg) > INT_MAX);
 }
 
+int	check_limits(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (limits(av[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 int	ft_isdigit(int c)
 {
 	return ((c >= '0' && c <= '9') || c == ' ');
 }
 
-int check_is_number(char *p)
+int	isit_int(char *ptr)
 {
-    int i = 0;
-    
-    while(p[i])
-    { 
-        if(p[i] == '-' || p[i] == '+')
-            i++;
-        if(!(ft_isdigit(p[i])))
-            return 0;
-        i++;
-    }
-    return 1;
+	int	i;
+
+	i = 0;
+	if (ptr[i] == '-' || ptr[i] == '+')
+		i++;
+	while (ptr[i])
+	{
+		if (!ft_isdigit(ptr[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void    ft_check(char *p)
+int	check_digit(char **ptr)
 {
-    if(!(check_is_number(p)))
-    {
-        write(1,"invalid arg\n",12);
-        exit(1);
-    } 
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+	{
+		if (!isit_int(ptr[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void duplicate(int *array, int n)
+void check_duplicate(int *array, int n)
 {
     int i = 0;
     int j ;
@@ -62,17 +73,14 @@ void duplicate(int *array, int n)
         while( j < n)
         {
             if (array[i] == array[j])
-            {
-                write(1,"There are duplicates.\n",22);
-                exit(0);
-            }
+                ft_error();
             j++;
         }
         i++;
     }
 }
 
-void    sort_arr(int *arr,int length)
+int    *sort_arr(int *arr,int length)
 {
     int i = 0;
     int j;
@@ -88,8 +96,9 @@ void    sort_arr(int *arr,int length)
                arr[i] = arr[j];    
                arr[j] = temp;    
            }
-           j++;   
+           j++;
         } 
         i++ ;  
-    }    
+    } 
+    return arr;
 }

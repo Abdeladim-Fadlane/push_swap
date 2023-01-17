@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:57:26 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/13 11:57:27 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:10:08 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ char	*ft_strdup(char *s1)
 	return (p);
 }
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
-	int			i;
-	int			res;
-	int			sn;
+	long			i;
+	long			res;
+	unsigned long long			sn;
 
 	if(!str)
 		return 0;

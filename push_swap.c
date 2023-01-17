@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:03:28 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/12 14:00:36 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:58:32 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,40 @@ void printList(t_list *start)
         temp = temp->next; 
     } 
 }
-
-void    stock_arr(char **container ,int ac)
+int check_sort(int *num,int k)
+{
+    int i = 1;
+    int n = num[0];
+    while(i < k)
+    {
+        if(n > num[i])
+        {
+            return 0;
+            break;
+        }
+        n = num[i];
+        i++;
+    }
+    return (1);
+}
+int    *stock_arr(char **container ,int n)
 {
     int  j = 0;
     int k ;
-    int *num = malloc(sizeof(int ) * ac);
+    int *num = malloc(sizeof(int) * n);
+    if(!num)
+        return(0);
     while(container[j])
     {
         k = ft_atoi(container[j]);
         num[j] = k;
         j++; 
     }
-    duplicate(num,ac - 1);
+    check_duplicate(num,n);
+    if(check_sort(num,n) == 1)
+       ft_error();
+    num = sort_arr(num,n); 
+    return num;
     free(num);
 }
 
@@ -46,7 +67,6 @@ char    **get_arg(char **av,int ac)
     {
         buff = ft_strjoin(buff,av[i]);
         buff = ft_strjoin(buff," ");
-        ft_check(buff);
         i++;  
     }
     container = ft_split(buff,32);
