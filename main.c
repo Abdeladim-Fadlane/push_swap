@@ -6,44 +6,43 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:33:30 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/17 18:38:11 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:11:05 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-void    ft_error(void)
-{
-    write(1,"Error.\n",7);
-        exit(1);
-}
+
 
 int main(int ac ,char **av)
 {
     t_list *stack_a;
-    t_list *new;
-    char **container;
+    t_list *stack_b;
+    t_struct *object = malloc(sizeof(t_struct));
     int h = 0;
-    container = get_arg(av,ac);
-    if(ac == 1 || !check_digit(container) )
+    if(ac == 1)
+        exit(1);
+    object->container = get_arg(av,ac);
+    if(!check_digit(object->container) || check_limits(av))
         ft_error();
-    while(container[h])
+    while(object->container[h])
     {
-        new = ft_lstnew(ft_atoi(container[h]));
-        add_back(&stack_a,new);
+        add_back(&stack_a,ft_lstnew(ft_atoi(object->container[h])));
         h++; 
     }
-    int *num  ;
-    num = stock_arr(container,ft_lstsize((stack_a)));
-    // for(int y = 0;y <  (ft_lstsize((stack_a))) ; y++)
-    // {
-    //     printf("%d\n",num[y]);
-    // }
-    //printf("%d--",ft_lstsize((stack_a)));
-    t_list *stack_b;
-    sort_stack(&stack_a ,&stack_b,num,ft_lstsize((stack_a)) );  
-    printList(stack_b);
-    //top_elememt2(&stack_a , 1 , 4);
-    // printf("=======================\n");
-    printList(stack_b);
+    object->num = stock_arr(object->container,ft_lstsize((stack_a)));
+    sort_stack(&stack_a ,&stack_b,object->num);
+   
     //system("leaks push_swap");
+}
+
+
+
+void printList(t_list *start) 
+{ 
+    t_list *temp = start;
+    while (temp!=NULL) 
+    { 
+        printf("%d\n", temp->data); 
+        temp = temp->next; 
+    } 
 }

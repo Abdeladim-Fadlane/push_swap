@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:34:42 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/17 16:32:04 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:32:25 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,41 +57,12 @@ void    ft_rra(t_list **lst)
             (*lst) = (*lst)->next;
         ptr->next = NULL;
         (*lst)->next = ptr1;
-        write(1,"rra\n",4);
+        
     }
+    write(1,"rra\n",4);
     
 }
-// t_list    *ft_luustlast(t_list *lst)
-// {
-//     t_list    *tmp;
 
-//     tmp = lst;
-//     while (tmp != NULL && tmp->next != NULL)
-//         tmp = tmp->next;
-//     return (tmp);
-// }
-// void    ft_rra(t_list **lst)
-// {
-//     t_list    *tmp;
-//     t_list    *s;
-//     t_list    *p;
-
-//     if (ft_lstsize(*lst) > 1)
-//     {
-//         tmp = (*lst);
-//         p = (*lst);
-//         (*lst) = ft_luustlast(*lst);
-//         s = ft_luustlast(p);
-//         while (tmp != NULL)
-//         {
-//             if (tmp->next->next == NULL)
-//                 break ;
-//             tmp = tmp->next;
-//         }
-//         s->next = p;
-//         tmp->next = NULL;
-//     }
-// }
 void	push_a(t_list **stack_b, t_list **stack_a)
 {
 	t_list	*ptr;

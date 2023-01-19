@@ -6,11 +6,12 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:45:08 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/16 18:58:34 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:17:19 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 int	limits(char *arg)
 {
 	return (ft_atoi(arg) < INT_MIN || ft_atoi(arg) > INT_MAX);
@@ -29,12 +30,13 @@ int	check_limits(char **av)
 	}
 	return (0);
 }
+
 int	ft_isdigit(int c)
 {
-	return ((c >= '0' && c <= '9') || c == ' ');
+	return (c >= '0' && c <= '9'); //|| c == ' ');
 }
 
-int	isit_int(char *ptr)
+int	check_digits(char *ptr)
 {
 	int	i;
 
@@ -57,7 +59,7 @@ int	check_digit(char **ptr)
 	i = 0;
 	while (ptr[i])
 	{
-		if (!isit_int(ptr[i]))
+		if (!check_digits(ptr[i]))
 			return (0);
 		i++;
 	}
@@ -78,27 +80,4 @@ void check_duplicate(int *array, int n)
         }
         i++;
     }
-}
-
-int    *sort_arr(int *arr,int length)
-{
-    int i = 0;
-    int j;
-    int temp;
-    while(i < length)
-    { 
-        j = i + 1;
-        while (j < length)
-        {     
-           if(arr[i] > arr[j])
-           {    
-               temp = arr[i];    
-               arr[i] = arr[j];    
-               arr[j] = temp;    
-           }
-           j++;
-        } 
-        i++ ;  
-    } 
-    return arr;
 }

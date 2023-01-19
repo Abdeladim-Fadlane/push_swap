@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:03:33 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/17 10:23:31 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:07:58 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,32 @@ typedef	struct list
 	struct list *next;
 }t_list;
 
+typedef struct class
+{
+	char **container;
+    int *num;
+}t_struct;
+
+typedef struct object
+{
+	int				size;
+	int				start;
+	int				end;
+	int				offset;
+	int				mid;
+	int				index;
+
+}					t_object;
+
+typedef struct object2
+{
+	int				len;
+	int				count;
+	int				size;
+}					t_object2;
+
 long	ft_atoi(char *s);
 int		ft_strlen(char *s);
-int 	get_index_min(t_list *lst);
-int 	get_min(t_list *lst);
 int 	ft_lstsize(t_list *list);
 char	**ft_split(char *s,char c);
 char    **get_arg(char **av,int ac);
@@ -39,7 +61,6 @@ void 	check_duplicate(int *array,int n);
 int   	*sort_arr(int *arr,int length);
 void    ft_sa(t_list **list);
 void    ft_ra(t_list **list);
-void	printList(t_list *start);
 void    ft_rra(t_list **lst);
 void	push_b(t_list **stack_a, t_list **stack_b);
 int     *stock_arr(char **container ,int ac);
@@ -49,11 +70,14 @@ void    ft_rb(t_list **list);
 void    ft_rr(t_list **lst);
 void    ft_rrb(t_list **lst);
 void    ft_rrr(t_list **lst);
-void	sort_stack(t_list **lst,t_list **lst2,int *num,int n);
-void	five_sort(t_list **lst,t_list **lst2);
-t_list  *ft_lstnew(int k);
-t_list 	*ft_lstlast(t_list **list);
+void	sort_stack(t_list **lst,t_list **lst2,int *num);
 int	    check_digit(char **ptr);
 void    ft_error(void);
 int	    check_limits(char **av);
+void	hundred_sort(t_list **a, t_list **b, int *ar);
+void	back_to_a(t_list **b, t_list **a, int *ar);
+int		get_size(t_list *stack);
+t_list  *ft_lstnew(int k);
+t_list 	*ft_lstlast(t_list **list);
+void	short_sort(t_list	**lst);
 #endif

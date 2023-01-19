@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:37:24 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/17 16:05:01 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:38:14 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void    ft_rb(t_list **list)
     t_list *ptr1;
     ptr1 = (*list);
     ptr = (*list)->next;
-    
+
     if(ft_lstsize(*list) >= 2)
     {
         while((*list)->next != NULL)
@@ -50,7 +50,8 @@ void    ft_rb(t_list **list)
         (*list) = ptr;
         write(1,"rb\n",3);
     }
-    
+    else
+        return ;
 }
 
 void    ft_rrb(t_list **lst)
