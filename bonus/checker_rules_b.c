@@ -1,37 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules_a.c                                          :+:      :+:    :+:   */
+/*   checker_rules_b.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 11:34:42 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/21 16:18:48 by afadlane         ###   ########.fr       */
+/*   Created: 2023/01/13 11:37:24 by afadlane          #+#    #+#             */
+/*   Updated: 2023/01/21 16:18:29 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "checker.h"
 
-void    ft_sa(t_list **lst)
+void    ft_sb(t_list **lst)
 {
     int k;
-   if(ft_lstsize(*lst) >= 2)
-   {
+    if (!(lst))
+		return ;
+    if(ft_lstsize(*lst) >= 2)
+    {
         k = (*lst)->data;
         (*lst)->data = (*lst)->next->data;
-        (*lst)->next->data = k;
-        write(1,"sa\n",3);
-   }
-   
+        (*lst)->next->data = k ;
+    }
+
+}
+void	push_b(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*ptr;
+
+	if (!(stack_a))
+		return ;
+	ptr = (*stack_a)->next;
+	(*stack_a)->next = *stack_b;
+	*stack_b = *stack_a;
+	*stack_a = ptr;
 }
 
-void    ft_ra(t_list **list)
+void    ft_rb(t_list **list)
 {
+  
     t_list *ptr;
     t_list *ptr1;
     ptr1 = (*list);
      if (!(list))
 		return ;
+    
     if(ft_lstsize(*list) >= 2)
     {   ptr = (*list)->next;
         while((*list)->next != NULL)
@@ -40,15 +54,16 @@ void    ft_ra(t_list **list)
         (*list)->next->next = NULL;
         (*list) = ptr;
     }
-    write(1,"ra\n",3);
 }
 
-void    ft_rra(t_list **lst)
+void    ft_rrb(t_list **lst)
 {
     t_list *ptr;
     t_list *ptr1;
     ptr1 = (*lst);
     ptr = (*lst);
+    if (!(lst))
+		return ;
     int n = 1;
     if(ft_lstsize(*lst) >= 2)
     {
@@ -61,21 +76,6 @@ void    ft_rra(t_list **lst)
             (*lst) = (*lst)->next;
         ptr->next = NULL;
         (*lst)->next = ptr1;
-        
-    }
-    write(1,"rra\n",4);
+    } 
     
-}
-
-void	push_a(t_list **stack_b, t_list **stack_a)
-{
-	t_list	*ptr;
-
-	if (*stack_b == NULL)
-		return ;
-	ptr = (*stack_b)->next;
-	(*stack_b)->next = *stack_a;
-	*stack_a = *stack_b;
-	*stack_b = ptr;
-    write(1,"pa\n",3);
 }

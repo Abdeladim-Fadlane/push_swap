@@ -6,13 +6,13 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:24:07 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/19 16:33:41 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/20 10:18:43 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-t_list	*get_last_elem(t_list *stack)
+t_list	*get_last_node(t_list *stack)
 {
 	while (stack->next)
 		stack = stack->next;
@@ -68,7 +68,7 @@ void	back_to_a(t_list **stack_b, t_list **stack_a, int *arr)
 				push_a(stack_b, stack_a);
 				object->len--;
 			}
-			else if (object->count == 0 || (*stack_b)->data > get_last_elem(*stack_a)->data)
+			else if (object->count == 0 || (*stack_b)->data > get_last_node(*stack_a)->data)
 			{
 				push_a(stack_b, stack_a);
 				ft_ra(stack_a);
@@ -91,5 +91,4 @@ void	back_to_a(t_list **stack_b, t_list **stack_a, int *arr)
 			object->len--;
 		}
 	}
-	free(object);
 }

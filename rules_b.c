@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:37:24 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/18 18:38:14 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:20:40 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void    ft_sb(t_list **lst)
 {
     int k;
-   
+    if (!(lst))
+		return ;
+
     k = (*lst)->data;
     (*lst)->data = (*lst)->next->data;
     (*lst)->next->data = k;
@@ -25,7 +27,7 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*ptr;
 
-	if (*stack_a == NULL)
+	if (!stack_a)
 		return ;
 	ptr = (*stack_a)->next;
 	(*stack_a)->next = *stack_b;
@@ -39,10 +41,11 @@ void    ft_rb(t_list **list)
     t_list *ptr;
     t_list *ptr1;
     ptr1 = (*list);
-    ptr = (*list)->next;
-
+    
+    if (!(list))
+		return ;
     if(ft_lstsize(*list) >= 2)
-    {
+    {   ptr = (*list)->next;
         while((*list)->next != NULL)
             (*list) = (*list)->next;
         (*list)->next = ptr1;
@@ -50,8 +53,6 @@ void    ft_rb(t_list **list)
         (*list) = ptr;
         write(1,"rb\n",3);
     }
-    else
-        return ;
 }
 
 void    ft_rrb(t_list **lst)
@@ -61,6 +62,8 @@ void    ft_rrb(t_list **lst)
     ptr1 = (*lst);
     ptr = (*lst);
     int n = 1;
+    if (!(lst))
+		return ;
     if(ft_lstsize(*lst) >= 2)
     {
         while(n < ft_lstsize(*lst) - 1)

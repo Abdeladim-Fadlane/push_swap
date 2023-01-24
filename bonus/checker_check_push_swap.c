@@ -6,12 +6,11 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:45:08 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/20 16:03:40 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/21 10:59:12 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
+#include "checker.h"
 int	limits(char *arg)
 {
 	return (ft_atoi(arg) < INT_MIN || ft_atoi(arg) > INT_MAX);

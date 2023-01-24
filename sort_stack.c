@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:00:15 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/19 18:03:19 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:08:45 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	five_sort(t_list **lst,t_list **lst2)
 
 void	sort_stack(t_list **lst,t_list **lst2,int *num)
 {
-	if(ft_lstsize(*lst) == 2)
+	if(ft_lstsize(*lst) == 2 && (*lst)->data > (*lst)->next->data)
 		ft_sa(lst);
 	else if(ft_lstsize(*lst) == 3)
 		short_sort(lst);

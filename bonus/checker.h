@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:03:33 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/21 14:02:40 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:24:57 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#ifndef CHECKER_H
+#define CHECKER_H
 
 #include<stdlib.h>
 #include<stdio.h>
 #include <limits.h>
 #include<unistd.h>
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 14
+# endif
 
 typedef	struct list
 {
@@ -51,6 +53,9 @@ typedef struct object2
 void    ft_ss(t_list **lst,t_list **lst1);
 void    ft_rr(t_list **lst,t_list **lst2);
 void    ft_rrr(t_list **lst,t_list **lst2);
+char	*get_next_line(int fd);
+char	*ft_strchr( char *p, int c);
+char	*ft_strdup(char *s1);
 long	ft_atoi(char *s);
 int		ft_strlen(char *s);
 int 	ft_lstsize(t_list *list);
