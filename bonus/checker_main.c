@@ -6,7 +6,7 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:33:30 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/21 16:28:54 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:33:44 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ int	check_if_sort(t_list *stack)
 	}
 	return (1);
 }
+
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
 	while (s2[i] && s1[i] && s2[i] == s1[i])
-	    i++;
+		i++;
 	return (s2[i] - s1[i]);
 }
+
 void	ft_rules(char *tmp, t_list **stack_a, t_list **stack_b)
 {
 	if (ft_strcmp(tmp, "sa\n") == 0)
@@ -59,31 +61,15 @@ void	ft_rules(char *tmp, t_list **stack_a, t_list **stack_b)
 		ft_error();
 }
 
-int main(int ac ,char **av)
+void	checker(t_list *stack_a, t_list *stack_b)
 {
-    t_list *stack_a;
-    t_list *stack_b = NULL;
-    char	*ptr;
-    t_struct *object = malloc(sizeof(t_struct));
-    int h = 0;
-    if(ac == 1)
-        exit(0);
-    object->container = get_arg(av,ac);
-    if(!check_digit(object->container) || check_limits(av))
-        ft_error();
-    while(object->container[h])
-    {
-        add_back(&stack_a,ft_lstnew(ft_atoi(object->container[h])));
-        h++; 
-    }
-    object->num = stock_arr(object->container,ft_lstsize((stack_a)));
-    while (1)
+	char	*ptr;
+
+	while (1)
 	{
 		ptr = get_next_line(0);
 		if (ptr == NULL)
-        {
-            break ;
-        }
+			break ;
 		ft_rules(ptr, &stack_a, &stack_b);
 		free(ptr);
 	}
@@ -91,4 +77,28 @@ int main(int ac ,char **av)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+}
+
+int	main(int ac, char **av)
+{
+	t_list		*stack_a;
+	t_list		*stack_b;
+	t_struct	*object;
+	int			h;
+
+	stack_b = NULL;
+	object = malloc(sizeof(t_struct));
+	h = 0;
+	if (ac == 1)
+		exit(0);
+	object->container = get_arg(av, ac);
+	if (!check_digit(object->container) || check_limits(av))
+		ft_error();
+	while (object->container[h])
+	{
+		add_back(&stack_a, ft_lstnew(ft_atoi(object->container[h])));
+		h++;
+	}
+	object->num = stock_arr(object->container, ft_lstsize((stack_a)));
+	checker(stack_a, stack_b);
 }

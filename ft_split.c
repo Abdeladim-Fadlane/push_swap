@@ -6,23 +6,22 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 18:46:27 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/13 11:44:22 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:34:08 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
 char	*ft_substr(char *s, int start, int len)
 {
-	int	i;
+	int		i;
 	char	*p;
 
 	i = 0;
 	if (!s)
 		return (NULL);
 	if (len > ft_strlen(s) - start)
-		len = ft_strlen(s) - start ;
+		len = ft_strlen(s) - start;
 	if (ft_strlen(s) <= start)
 		return (ft_strdup(""));
 	p = malloc(sizeof(char) * (len + 1));
@@ -37,10 +36,10 @@ char	*ft_substr(char *s, int start, int len)
 	return (p);
 }
 
-static	int	ft_count(char *s, char c)
+static int	ft_count(char *s, char c)
 {
 	int	i;
-	int		count;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -57,12 +56,11 @@ static	int	ft_count(char *s, char c)
 	return (count);
 }
 
-
-static char	**my_func( char *s, char c, char **p)
+static char	**my_func(char *s, char c, char **p)
 {
-	int		j;
-	int		k;
-	int		i;
+	int	j;
+	int	k;
+	int	i;
 
 	j = 0;
 	i = 0;
@@ -83,7 +81,7 @@ static char	**my_func( char *s, char c, char **p)
 	return (p);
 }
 
-char	**ft_split(char  *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**p;
 

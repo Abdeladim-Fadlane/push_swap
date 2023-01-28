@@ -6,13 +6,11 @@
 /*   By: afadlane <afadlane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:57:26 by afadlane          #+#    #+#             */
-/*   Updated: 2023/01/16 09:10:08 by afadlane         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:34:14 by afadlane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#include"push_swap.h"
+#include "push_swap.h"
 
 int	ft_strlen(char *s)
 {
@@ -36,8 +34,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = 0;
 	if (!s1)
 		s1 = ft_strdup("");
-	if(!s2)
-		return s1;
+	if (!s2)
+		return (s1);
 	p = malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!p)
 		return (NULL);
@@ -53,12 +51,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (p);
 }
 
-
 char	*ft_strdup(char *s1)
 {
-	char	*p = "";
+	char	*p;
 	int		i;
 
+	p = "";
 	if (!s1)
 		return (NULL);
 	i = 0;
@@ -76,12 +74,12 @@ char	*ft_strdup(char *s1)
 
 long	ft_atoi(char *str)
 {
-	long			i;
-	long			res;
-	unsigned long long			sn;
+	long				i;
+	long				res;
+	unsigned long long	sn;
 
-	if(!str)
-		return 0;
+	if (!str)
+		return (0);
 	i = 0;
 	res = 0;
 	sn = 1;
